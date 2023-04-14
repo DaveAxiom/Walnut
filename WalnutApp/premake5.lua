@@ -10,7 +10,7 @@ project "WalnutApp"
    includedirs
    {
       "../vendor/imgui",
-      "../vendor/glfw/include",
+      --"../vendor/glfw/include",
 
       "../Walnut/src",
 
@@ -29,6 +29,9 @@ project "WalnutApp"
    filter "system:windows"
       systemversion "latest"
       defines { "WL_PLATFORM_WINDOWS" }
+
+   filter "system:linux"
+      links { "glfw", "imgui", "vulkan" }
 
    filter "configurations:Debug"
       defines { "WL_DEBUG" }
