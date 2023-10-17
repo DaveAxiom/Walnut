@@ -17,20 +17,22 @@ project "Walnut"
       "%{IncludeDir.glm}",
    }
 
-   links
-   {
-       "ImGui",
-       "GLFW",
-
-       "%{Library.Vulkan}",
-   }
-
    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
    objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
 
    filter "system:windows"
       systemversion "latest"
       defines { "WL_PLATFORM_WINDOWS" }
+      links
+      {
+	      "ImGui",
+	      "GLFW",
+	      "%{Library.Vulkan}",
+      }
+
+   filter "system:linux"
+      systemversion "latest"
+      defines { "WL_PLATFORM_LINUX" }
 
    filter "configurations:Debug"
       defines { "WL_DEBUG" }
